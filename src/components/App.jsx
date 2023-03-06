@@ -1,37 +1,21 @@
-import { Component } from "react";
+import { useState } from "react";
 import { StatPage } from "./statistics/Statistics";
 import FeedbackOptions from "./feedback/Feedback";
 import { FeedbackStyle, Section, SectionTitle, StatisticsBox, StatisticsText } from "./App.styled";
 
-// export const App = () => {
-//   return (
-//     <div
-//       style={{
-//         height: '100vh',
-//         display: 'flex',
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         fontSize: 40,
-//         color: '#010101',
-//         flexDirection: 'column'
-//       }}
-//     >
-//       <FeedbackPage />
-      
-      
-//     </div>
-//   );
-// };
 
-class App extends Component {
+
+export default function App () {
     
-      
-        
-    state = {
-            good: 0,
-            neutral: 0,   
-            bad: 0   
-  }
+  const [good, useGood] = useState(0);
+  const [neutral, useNeutral] = useState(0);
+  const [bad, useBad] = useState(0);
+  
+  //   state = {
+  //           good: 0,
+  //           neutral: 0,   
+  //           bad: 0   
+  // }
   
   HandleClickButton = e => {
     const option = e.target.name;
@@ -41,26 +25,7 @@ class App extends Component {
     }
   };
 
-    // CountGood = () => {
-    //     console.log('good');
-    //     console.log(this);
-    //     this.setState(prevState => ({
-    //         good: prevState.good + 1
-    //     }));
-    // }
-    
-    // CountNeutral = () => {
-    //     this.setState(evt => ({
-    //         neutral: evt.neutral + 1,
-    //     }));
-    // }
-    
-    // CountBad = () => {
-    //     this.setState(prevState => ({
-    //         bad: prevState.bad + 1,
-    //     }));
-    // }
-    
+        
     countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
@@ -112,4 +77,4 @@ Please leave feedback</SectionTitle>
     }
 }
 
-export default App
+// export default App
