@@ -7,9 +7,9 @@ import { FeedbackStyle, Section, SectionTitle, StatisticsBox, StatisticsText } f
 
 export default function App () {
     
-  const [good, useGood] = useState(0);
-  const [neutral, useNeutral] = useState(0);
-  const [bad, useBad] = useState(0);
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
   
   //   state = {
   //           good: 0,
@@ -17,13 +17,25 @@ export default function App () {
   //           bad: 0   
   // }
   
-  HandleClickButton = e => {
-    const option = e.target.name;
 
-    if (option) {
-      this.setState(prevState => ({ [option]: prevState[option] + 1 }));
-    }
-  };
+const HandleClickGood=()=>{
+  setGood(state=>state+1);
+}
+const HandleClickNeutral=()=>{
+  setNeutral(state=>state+1);
+}
+const HandleClickBad=()=>{
+  setBad(state=>state+1);
+}
+
+
+  // HandleClickButton = e => {
+  //   const option = e.target.name;
+
+  //   if (option) {
+  //     this.setState(prevState => ({ [option]: prevState[option] + 1 }));
+  //   }
+  // };
 
         
     countTotalFeedback = () => {
