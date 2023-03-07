@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StatPage } from "./statistics/Statistics";
 import FeedbackOptions from "./feedback/Feedback";
 import { FeedbackStyle, Section, SectionTitle, StatisticsBox, StatisticsText } from "./App.styled";
@@ -37,30 +37,35 @@ const HandleClickBad=()=>{
   //   }
   // };
 
-        
-    countTotalFeedback = () => {
-    const { good, neutral, bad } = this.state;
-    return good + neutral + bad;
-  };
-
-  countPositiveFeedback = () => {
-    const totalFeedback = this.countTotalFeedback();
-    const goodFeedback = this.state.good;
-    let result = 0;
-
-    if (totalFeedback > 0) {
-      result = Math.ceil((goodFeedback / totalFeedback) * 100);
-    }
-
+  useEffect(() => {
+    const countTotalFeedback = good + neutral + bad;
+    const result = Math.ceil((good / countTotalFeedback) * 100);
     return `${result}%`;
-  };
+  }, [good, neutral, bad]);
+        
+  //   countTotalFeedback = () => {
+  //   const { good, neutral, bad } = this.state;
+  //   return good + neutral + bad;
+  // };
 
-    render() {
-      const { good, neutral, bad } = this.state;
-      const countTotalFeedback = this.countTotalFeedback();
-      const countPositiveFeedback = this.countPositiveFeedback();
-      const HandleClickButton = this.HandleClickButton;
-      const options = Object.keys(this.state);
+  // countPositiveFeedback = () => {
+  //   const totalFeedback = this.countTotalFeedback();
+  //   const goodFeedback = this.state.good;
+  //   let result = 0;
+
+  //   if (totalFeedback > 0) {
+  //     result = Math.ceil((goodFeedback / totalFeedback) * 100);
+  //   }
+
+  //   return `${result}%`;
+  // };
+
+    // render() {
+      // const { good, neutral, bad } = this.state;
+      // const countTotalFeedback = this.countTotalFeedback();
+      // const countPositiveFeedback = this.countPositiveFeedback();
+      // const HandleClickButton = this.HandleClickButton;
+      // const options = Object.keys(this.state);
        
       return (
         // <div>
@@ -70,7 +75,13 @@ const HandleClickBad=()=>{
             
               <SectionTitle title="Please leave feedback">
 Please leave feedback</SectionTitle>
-              <FeedbackOptions options={options} onLeaveFeedback={HandleClickButton}/>
+            <FeedbackOptions good={good}
+              neutral={neutral}
+              bad={bad}
+              onLeaveFeedbackGood={HandleClickGood }
+              onLeaveFeedbackNeutral={HandleClickNeutral}
+            onLeaveFeedbackBad={HandleClickBad}
+            />
           </FeedbackStyle>
                        
           <StatisticsBox>
@@ -87,6 +98,6 @@ Please leave feedback</SectionTitle>
         // </div>
         )
     }
-}
+// }
 
 // export default App
