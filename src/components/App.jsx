@@ -14,9 +14,6 @@ export default function App () {
   
   const options = ['good', 'neutral', 'bad'];
   
-// const HandleClickGood=()=>{
-//   setGood(state=>state+1);
-// }
   
  const HandleClickButton = e => {
    const name = e.target.name;
