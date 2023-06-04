@@ -17,12 +17,6 @@ export default function App () {
 // const HandleClickGood=()=>{
 //   setGood(state=>state+1);
 // }
-// const HandleClickNeutral=()=>{
-//   setNeutral(state=>state+1);
-// }
-// const HandleClickBad=()=>{
-//   setBad(state=>state+1);
-//   }
   
  const HandleClickButton = e => {
    const name = e.target.name;
