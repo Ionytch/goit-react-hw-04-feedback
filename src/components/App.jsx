@@ -14,7 +14,6 @@ export default function App () {
   
   const options = ['good', 'neutral', 'bad'];
   
-  
  const HandleClickButton = e => {
    const name = e.target.name;
    switch (name) {
